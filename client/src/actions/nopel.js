@@ -10,6 +10,16 @@ export const getNopels = () => async (dispatch) => {
     }
 }
 
+export const getNopel = (id) => async (dispatch) => {
+    try {
+        const { data } = await api.getNopel(id);
+
+        dispatch({type: 'FETCH_ALL', payload: data})
+    } catch (error) {
+        console.log(error.message);
+    }
+}
+
 export const createNopel = (post) => async (dispatch) => {
     try {
         const { data } = await api.createNopel(post);
