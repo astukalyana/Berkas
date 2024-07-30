@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
-import { Box, Container, Divider, Grid, Icon, IconButton, Paper, Step, StepLabel, Stepper, Typography } from '@mui/material'
+import React from 'react'
+import { Box, Divider, Step, StepLabel, Stepper, Typography } from '@mui/material'
+import { useSelector } from 'react-redux';
 
 const steps = [
     { label: 'Penerimaan dan pemeriksaan berkas' },
@@ -11,23 +12,14 @@ const steps = [
     { label: 'SPPT anda telah jadi' },
 ]
 
-const Progress = () => {
-  const [activeStep, setActiveStep] = useState(0);
-  
-  const [personData, setPersonData] = useState({
-    'nama': 'Gabriel Damar Astukalyana Saroy',
-    'tanggal': '23 September 2023',
-    'jenis': 'Mutasi Sebagian',
-    'keterangan': 'Mutasi sebagian dari Muhammad Marwan ke Gabriel Damar Astukalyana Saroy LT/LB 224/120',
-    'nopel': 'WIJK3412391'
-  })
+const Progress = ({ dataBerkas }) => {
 
   return (
     <>
-        <Typography variant='h4' align='center' padding={3}>{personData.nopel}</Typography>
+        <Typography variant='h4' align='center' padding={3}>{dataBerkas.nomor_pelayanan}</Typography>
         <Divider variant='middle'/>
         <Box padding={6}>
-            <Stepper activeStep={activeStep} orientation='vertical'>
+            <Stepper activeStep={dataBerkas.proses} orientation='vertical'>
                 {steps.map((step, index) => (
                     <Step key={step.label}>
                         <StepLabel>

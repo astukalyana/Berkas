@@ -14,8 +14,11 @@ const Nopel = sequelize.define('nopel', {
     unique: true
   },
   tgl_pelayanan: {
-    type: DataTypes.DATE,
+    type: DataTypes.DATEONLY,
     allowNull: false,
+  },
+  jenis_pelayanan: {
+    type: DataTypes.ENUM("MUTASI HABIS", "MUTASI SEBAGIAN", "OP BARU", "PEMBETULAN")
   },
   nop: {
     type: DataTypes.STRING,
