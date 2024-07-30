@@ -9,7 +9,7 @@ import nopelRoutes from './routes/nopel.js';
 dotenv.config()
 
 const app = express();
-const PORT = process.env.DB_PORT
+const PORT = process.env.DB_PORT || 5000
 
 app.use(bodyParser.json());
 app.use(cors());
@@ -30,6 +30,6 @@ sequelize.sync({ force: false })
   });
 
 
-app.listen(PORT, () => {
+app.listen(PORT, "0.0.0.0", () => {
     console.log(`App running on port: ${PORT}`);
 });
