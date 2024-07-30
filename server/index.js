@@ -11,13 +11,12 @@ dotenv.config()
 const app = express();
 const PORT = process.env.DB_PORT
 
+app.use(bodyParser.json());
+app.use(cors());
+
 app.get('/', (req, res) => {
     res.send("WELCOME TO UPT4 NOPEL TRACKING APPLICATION!")
 });
-
-
-app.use(bodyParser.json());
-app.use(cors());
 
 app.use('/nopel', nopelRoutes);
 

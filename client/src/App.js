@@ -1,16 +1,23 @@
 import React from 'react'
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import { Container } from '@mui/material';
 
 import Info from './components/Info';
-import Progress from './components/Progress';
+import Home from './components/Home';
 
 import './App.css'
 
 const App = () => {
   return (
-    <Container>
-      <Info/>
-    </Container>
+    <BrowserRouter>
+      <Container>
+        <Switch>
+          <Route path="/" exact component={() => <Redirect to="/nopel" />}/>
+          <Route path="/nopel" exact component={Home}/>
+          <Route path="/nopel/:nopel" exact component={Info}/>
+        </Switch>
+      </Container>
+    </BrowserRouter>
   )
 }
 
